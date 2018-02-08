@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.Dao.SupplierDao;
@@ -11,8 +13,8 @@ import com.niit.Dao.SupplierDao;
 import com.niit.Model.Supplier;
 
 
-
-
+@Repository
+@Service
 public class SupplierDaoImpl implements SupplierDao {
 
 	@Autowired

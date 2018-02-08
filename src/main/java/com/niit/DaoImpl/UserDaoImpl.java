@@ -6,15 +6,19 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.Dao.UserDao;
 import com.niit.Model.Supplier;
 import com.niit.Model.User;
 import com.niit.config.HibernateConfig;
-
+@Repository
+@Transactional
+@Service
 public class UserDaoImpl implements UserDao {
-	private HibernateConfig config;
+	/*private HibernateConfig config;*/
 	 @Autowired
 	    SessionFactory sessionFactory;
 		@Autowired
@@ -23,11 +27,11 @@ public class UserDaoImpl implements UserDao {
 			this.sessionFactory=sessionFactory;
 			
 		}
-		public   UserDaoImpl() {
+		/*public   UserDaoImpl() {
 			System.out.println("user dao successfully created");
-			}
+			}*/
 		
-		@Transactional
+		
 	    @Override
 
 	public  void  insertUser(User user) {

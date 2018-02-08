@@ -15,7 +15,10 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
+import com.niit.Dao.CategoryDao;
+import com.niit.Dao.ProductDao;
+import com.niit.Dao.SupplierDao;
+import com.niit.Dao.UserDao;
 import com.niit.DaoImpl.CategoryDaoImpl;
 import com.niit.DaoImpl.ProductDaoImpl;
 import com.niit.DaoImpl.SupplierDaoImpl;
@@ -26,7 +29,7 @@ import com.niit.Model.*;
 @ComponentScan("com.niit")
 @EnableTransactionManagement
 public class HibernateConfig {
-	//@Autowired
+	@Autowired
 	@Bean(name="datasource")
 	
 	public DataSource getH2Data()
@@ -52,12 +55,12 @@ public class HibernateConfig {
 		return p;
 	}
 	//@SuppressWarnings("deprecation")
-	//@Autowired
+	@Autowired
 	@Bean(name="sessionFactory")
 	public SessionFactory getSessionFac(DataSource datasource)
 	{
 		LocalSessionFactoryBuilder sb=new LocalSessionFactoryBuilder(datasource);
-		System.out.println("User.class");
+		System.out.println(" Vina User.class");
 		sb.addAnnotatedClass(User.class);
 		System.out.println("Category.class");
 
@@ -76,39 +79,39 @@ public class HibernateConfig {
 	}
 	
 	
-	
-	@Bean(name="userDaoImpl")
-	public UserDaoImpl getUserData(SessionFactory sf)
+	 
+	@Autowired
+	@Bean(name="userDao")
+	public UserDao getUserData(SessionFactory sf)
 	{
 		return new UserDaoImpl(sf);
 	}
 
 	
-	//@Autowired
-	@Bean(name="suppDaoImpl")
+	@Autowired
+	@Bean(name="supplierDaoImpl")
 	public SupplierDaoImpl getSupplierData(SessionFactory sf)
 	{
 		return new SupplierDaoImpl(sf);
 	}
 	
-//	@Autowired
+	@Autowired
 	@Bean(name="categoryDaoImpl")
-	
-	public CategoryDaoImpl getCategoryData(SessionFactory sf)
+		public CategoryDaoImpl getCategoryData(SessionFactory sf)
 	{
 	return new CategoryDaoImpl(sf);	
 	}
 	
 	
 	
-	//@Autowired
+	@Autowired
 	@Bean(name="productDaoImpl")
 	public ProductDaoImpl getProductData(SessionFactory sf)
 	{
 		return new ProductDaoImpl(sf);
 	}
 	
-		//@Autowired
+		@Autowired
 		@Bean(name="transcationManager")
 		public HibernateTransactionManager gettrans(SessionFactory sf)
 		{

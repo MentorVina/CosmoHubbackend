@@ -8,14 +8,16 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.Dao.CategoryDao;
 import com.niit.Model.Category;
 
 
-
-
+@Repository
+//@Service
 public class CategoryDaoImpl implements CategoryDao {
 
 	@Autowired
@@ -30,7 +32,7 @@ public class CategoryDaoImpl implements CategoryDao {
 		System.out.println("Category dao successfully created");
 		}
 
-	@Transactional
+	//@Transactional
 	public void insertCategory(Category category) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -47,7 +49,7 @@ public class CategoryDaoImpl implements CategoryDao {
 		session.getTransaction().commit();
 		session.close();
 	}
-
+	@Transactional
 	public void deleteCategory(Category category) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
