@@ -29,14 +29,13 @@ import com.niit.Model.*;
 @ComponentScan("com.niit")
 @EnableTransactionManagement
 public class HibernateConfig {
-	@Autowired
-	@Bean(name="datasource")
 	
-	public DataSource getH2Data()
-	{
+	@Bean(name = "datasource")
+
+	public DataSource getH2Data() {
 		System.out.println("hibernate bean initiated");
-		
-		DriverManagerDataSource dsource=new DriverManagerDataSource();
+
+		DriverManagerDataSource dsource = new DriverManagerDataSource();
 		dsource.setDriverClassName("org.h2.Driver");
 		dsource.setUrl("jdbc:h2:tcp://localhost/~/test");
 		dsource.setUsername("sa");
@@ -44,22 +43,22 @@ public class HibernateConfig {
 		System.out.println("H2 connected");
 		return dsource;
 	}
-	private Properties gethiberProp()
-	{
-		
-		Properties p=new Properties();
-		p.put("hibernate.dialect","org.hibernate.dialect.H2Dialect");
-		p.put("hibernate.hbm2ddl.auto","update");
-		p.put("hibernate.show_sql","true");
+
+	private Properties gethiberProp() {
+
+		Properties p = new Properties();
+		p.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		p.put("hibernate.hbm2ddl.auto", "update");
+		p.put("hibernate.show_sql", "true");
 		System.out.println("Data table created in H2");
 		return p;
 	}
-	//@SuppressWarnings("deprecation")
+
+	// @SuppressWarnings("deprecation")
 	@Autowired
-	@Bean(name="sessionFactory")
-	public SessionFactory getSessionFac(DataSource datasource)
-	{
-		LocalSessionFactoryBuilder sb=new LocalSessionFactoryBuilder(datasource);
+	@Bean(name = "sessionFactory")
+	public SessionFactory getSessionFac(DataSource datasource) {
+		LocalSessionFactoryBuilder sb = new LocalSessionFactoryBuilder(datasource);
 		System.out.println(" Vina User.class");
 		sb.addAnnotatedClass(User.class);
 		System.out.println("Category.class");
@@ -71,52 +70,38 @@ public class HibernateConfig {
 		System.out.println("Supplier.class");
 
 		sb.addAnnotatedClass(Supplier.class);
-		sb.addProperties(gethiberProp()); 
-		
-		
+		sb.addProperties(gethiberProp());
+
 		return sb.buildSessionFactory();
-		
+
 	}
-	
-	
-	 
 	@Autowired
-	@Bean(name="userDao")
-	public UserDao getUserData(SessionFactory sf)
-	{
+	@Bean(name = "userDaoImpl")
+	public UserDaoImpl getUserData(SessionFactory sf) {
 		return new UserDaoImpl(sf);
 	}
 
-	
 	@Autowired
-	@Bean(name="supplierDaoImpl")
-	public SupplierDaoImpl getSupplierData(SessionFactory sf)
-	{
+	@Bean(name = "categoryDaoImpl")
+	public CategoryDaoImpl getCategoryData(SessionFactory sf) {
+		return new CategoryDaoImpl(sf);
+	}
+	@Autowired
+	@Bean(name = "supplierDaoImpl")
+	public SupplierDaoImpl getSupplierData(SessionFactory sf) {
 		return new SupplierDaoImpl(sf);
 	}
-	
 	@Autowired
-	@Bean(name="categoryDaoImpl")
-		public CategoryDaoImpl getCategoryData(SessionFactory sf)
-	{
-	return new CategoryDaoImpl(sf);	
-	}
-	
-	
-	
-	@Autowired
-	@Bean(name="productDaoImpl")
-	public ProductDaoImpl getProductData(SessionFactory sf)
-	{
+	@Bean(name = "productDaoImpl")
+	public ProductDaoImpl getProductData(SessionFactory sf) {
 		return new ProductDaoImpl(sf);
 	}
-	
-		@Autowired
-		@Bean(name="transcationManager")
-		public HibernateTransactionManager gettrans(SessionFactory sf)
-		{
-			HibernateTransactionManager tm=new HibernateTransactionManager(sf);
-			return tm;
-		}
+
+	@Autowired
+	@Bean(name = "transcationManager")
+	public HibernateTransactionManager gettrans(SessionFactory sf) {
+		HibernateTransactionManager tm = new HibernateTransactionManager(sf);
+		return tm;
+	}
 
 }

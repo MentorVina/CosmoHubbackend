@@ -15,21 +15,23 @@ import com.niit.Model.Supplier;
 import com.niit.Model.User;
 import com.niit.config.HibernateConfig;
 @Repository
-@Transactional
+
 @Service
 public class UserDaoImpl implements UserDao {
 	/*private HibernateConfig config;*/
 	 @Autowired
 	    SessionFactory sessionFactory;
-		@Autowired
+	@Autowired
 		public  UserDaoImpl(SessionFactory sessionFactory)
 		{
 			this.sessionFactory=sessionFactory;
 			
+			
 		}
-		/*public   UserDaoImpl() {
+		
+		public   UserDaoImpl() {
 			System.out.println("user dao successfully created");
-			}*/
+		}
 		
 		
 	    @Override

@@ -25,11 +25,12 @@ public class SupplierDaoImpl implements SupplierDao {
 		
 		this.sessionFactory = sessionFactory;
 	}
+	
 	public   SupplierDaoImpl() {
 		System.out.println("Supplier dao successfully created");
 		}
 
-	@Transactional
+	
 	public void insertSupplier(Supplier supplier) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -38,7 +39,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		session.close();
 	}
 
-	@Transactional
+	
 	public void updateSupplier(Supplier supplier) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -47,7 +48,6 @@ public class SupplierDaoImpl implements SupplierDao {
 		session.close();
 	}
 
-	@Transactional
 	public void deleteSupplier(Supplier supplier) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -55,7 +55,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		session.getTransaction().commit();
 	}
 	
-	@Transactional
+
 	public List<Supplier> getAllSupplier(){
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -65,7 +65,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		return supplierList;
 	}
 
-	@Transactional
+
 	public Supplier getSupplier(int sid) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
