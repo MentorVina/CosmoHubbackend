@@ -10,7 +10,7 @@ import com.niit.DaoImpl.UserDaoImpl;
 import com.niit.Model.User;
 import com.niit.config.HibernateConfig;
 
-public class TestUserInsert {
+/*public class TestUserInsert {
 
 	
 	private static HibernateConfig config;
@@ -39,4 +39,4 @@ public class TestUserInsert {
 		userDao.insertUser(user);
 	}
 	
-}
+}*/

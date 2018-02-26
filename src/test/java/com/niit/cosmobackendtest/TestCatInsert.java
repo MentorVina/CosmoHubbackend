@@ -8,7 +8,7 @@ import com.niit.DaoImpl.CategoryDaoImpl;
 import com.niit.Model.Category;
 import com.niit.config.HibernateConfig;
 
-public class TestCatInsert {
+/*public class TestCatInsert {
 	
 	private static HibernateConfig config;
 	private static CategoryDao categoryDao;
@@ -27,4 +27,4 @@ public class TestCatInsert {
 		categoryDao.insertCategory(category);
 	}
 
-}
+}*/

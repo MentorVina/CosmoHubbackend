@@ -52,14 +52,7 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	
-	public void deleteProduct(Product product) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.delete(product);
-		session.getTransaction().commit();
-		session.close();
-	}
-
+	
 	
 	public Product getProduct(int pid) {
 		Session session = sessionFactory.openSession();
@@ -77,6 +70,28 @@ public class ProductDaoImpl implements ProductDao {
 		Query query =  session.createQuery("FROM Product");
 		List<Product> productsList = query.list();
 		return productsList;
+	}
+
+	@Override
+	public void deleteProdPid(int pid) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Product product = (Product)session.get(Product.class, pid);
+		session.delete(product);
+		session.getTransaction().commit();
+		session.close();
+	
+	}
+
+	@Override
+	public List<Product> getProdCid(int cid) {
+		Session session = sessionFactory.openSession();
+		List<Product> productsList = null;
+		session.beginTransaction();
+		productsList =  session.createQuery("FROM Product where cid="+cid).list();
+session.getTransaction().commit();
+		return productsList;
+		
 	}
 
 	

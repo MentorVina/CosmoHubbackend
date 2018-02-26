@@ -8,7 +8,7 @@ import com.niit.DaoImpl.SupplierDaoImpl;
 import com.niit.Model.Supplier;
 import com.niit.config.HibernateConfig;
 
-public class TestSuppInsert {
+/*public class TestSuppInsert {
 	private static HibernateConfig config;
 	private static SupplierDao supplierDao;
 	
@@ -26,4 +26,4 @@ public class TestSuppInsert {
 		supplierDao.insertSupplier(supplier);
 	}
 
-}
+}*/

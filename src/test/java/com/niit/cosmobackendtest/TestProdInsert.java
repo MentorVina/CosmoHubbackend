@@ -15,7 +15,7 @@ public class TestProdInsert {
 	private static HibernateConfig config;
 	private static ProductDao productDao;
 	
-	@BeforeClass
+	/*@BeforeClass
 	public static void setUp(){
 		config = new HibernateConfig();
 		productDao = new ProductDaoImpl(config.getSessionFac(config.getH2Data()));
@@ -24,9 +24,8 @@ public class TestProdInsert {
 	@Test
 	public void testInsertProduct(){
 		Product product = new Product();
-		product.setPid(1);
-		product.setPname("Kurta");
-		product.setDescription("Authentic Kurta");
+		product.setPname("lenses");
+		product.setDescription("colourful lenses ");
 		product.setPrice(3000.50f);
 		product.setStock(10);
 		
@@ -39,10 +38,10 @@ public class TestProdInsert {
 		supplier.setSid(1);
 		
 		product.setSupplier(supplier);
-		product.setImagname("kurta");
+		product.setImagname("lenses.jpg");
 		
 		productDao.insertProduct(product);
-	}
+	}*/
 }
 
 
