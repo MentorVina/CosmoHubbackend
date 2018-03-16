@@ -1,6 +1,7 @@
 package com.niit.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,34 +12,34 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
-@SuppressWarnings("unused")
-@Entity
+
+
 @Component
+@Entity
 public class Cart implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cartId;
 	private int cartProductID;
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="userMailed")
-	private User cartUserDetails;
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="email")
+	private User userEmail;
 	private double cartPrice;
 	private int cartQuantity;
 	private String cartImages;
 	private String cartProductName;
-	
-	public Cart()
-	{
-		
-	}
 	public int getCartId() {
 		return cartId;
 	}
 	public int getCartProductID() {
 		return cartProductID;
 	}
-	public User getCartUserDetails() {
-		return cartUserDetails;
+	public User getUserEmail() {
+		return userEmail;
 	}
 	public double getCartPrice() {
 		return cartPrice;
@@ -58,8 +59,8 @@ public class Cart implements Serializable {
 	public void setCartProductID(int cartProductID) {
 		this.cartProductID = cartProductID;
 	}
-	public void setCartUserDetails(User cartUserDetails) {
-		this.cartUserDetails = cartUserDetails;
+	public void setUserEmail(User userEmail) {
+		this.userEmail = userEmail;
 	}
 	public void setCartPrice(double cartPrice) {
 		this.cartPrice = cartPrice;
@@ -73,16 +74,7 @@ public class Cart implements Serializable {
 	public void setCartProductName(String cartProductName) {
 		this.cartProductName = cartProductName;
 	}
-	public Cart(int cartId,int cartProductID,User cartUserDetails, Double cartPrice,int cartQuantity)
-	{
-		this.cartId=cartId;
-		this.cartProductID=cartProductID;
-		this.cartUserDetails=cartUserDetails;
-		this.cartPrice=cartPrice;
-		this.cartQuantity=cartQuantity;
-	}
 	
 	
-
-
+	
 }

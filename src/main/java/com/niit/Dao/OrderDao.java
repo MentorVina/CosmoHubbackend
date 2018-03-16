@@ -1,7 +1,7 @@
 package com.niit.Dao;
-import com.niit.Model.Order;
+import com.niit.Model.Orders;
 
 public interface OrderDao {
-	public void insertOrder(Order order);
+	public void insertOrder(Orders order);
 	
 }

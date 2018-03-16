@@ -9,18 +9,22 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Component;
 
-@SuppressWarnings("unused")
-@Entity
 @Component
-public class Order {
+@Entity
+public class Orders  {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int orderId;
+	
 	@ManyToOne
 	@JoinColumn(name="email")
-	private User user;//one user can give multiple orders
+	private User user;
+	
 	private String payment;
 	private Double total;
+	
+	
+	
 	public int getOrderId() {
 		return orderId;
 	}
@@ -45,5 +49,6 @@ public class Order {
 	public void setTotal(Double total) {
 		this.total = total;
 	}
+
 
 }

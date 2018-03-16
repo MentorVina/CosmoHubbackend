@@ -1,3 +1,4 @@
+
 package com.niit.Dao;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public interface UserDao {
 		public User  getUser(int id );
 		public void  updateUser(User user );
 		public void  deleteUser(User user );
+		public User getUserById(String email);
 
 
 }

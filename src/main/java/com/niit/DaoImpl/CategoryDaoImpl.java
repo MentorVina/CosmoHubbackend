@@ -26,7 +26,7 @@ public class CategoryDaoImpl implements CategoryDao {
 			
 	}
 	
-	public   CategoryDaoImpl()
+	public  CategoryDaoImpl()
 	{
 		System.out.println("Category dao successfully created sucess1");
 		}

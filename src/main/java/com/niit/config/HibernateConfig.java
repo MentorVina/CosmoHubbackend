@@ -19,7 +19,9 @@ import com.niit.Dao.CategoryDao;
 import com.niit.Dao.ProductDao;
 import com.niit.Dao.SupplierDao;
 import com.niit.Dao.UserDao;
+import com.niit.DaoImpl.CartDaoImpl;
 import com.niit.DaoImpl.CategoryDaoImpl;
+import com.niit.DaoImpl.OrderDaoImpl;
 import com.niit.DaoImpl.ProductDaoImpl;
 import com.niit.DaoImpl.SupplierDaoImpl;
 import com.niit.DaoImpl.UserDaoImpl;
@@ -61,20 +63,30 @@ public class HibernateConfig {
 		LocalSessionFactoryBuilder sb = new LocalSessionFactoryBuilder(datasource);
 		System.out.println(" Vina User.class");
 		sb.addAnnotatedClass(User.class);
+		
 		System.out.println("Category.class");
-
-		sb.addAnnotatedClass(Category.class);
+        sb.addAnnotatedClass(Category.class);
+        
 		System.out.println("Product");
-
 		sb.addAnnotatedClass(Product.class);
+		
 		System.out.println("Supplier.class");
+        sb.addAnnotatedClass(Supplier.class);
+        
+    	System.out.println("Cart.class");
+		sb.addAnnotatedClass(Cart.class);
 
-		sb.addAnnotatedClass(Supplier.class);
+		System.out.println("order class created before");
+		sb.addAnnotatedClass(Orders.class);
+		System.out.println("order class created");
+		
+		
 		sb.addProperties(gethiberProp());
 
 		return sb.buildSessionFactory();
 
 	}
+	
 	@Autowired
 	@Bean(name = "userDaoImpl")
 	public UserDaoImpl getUserData(SessionFactory sf) {
@@ -95,6 +107,16 @@ public class HibernateConfig {
 	@Bean(name = "productDaoImpl")
 	public ProductDaoImpl getProductData(SessionFactory sf) {
 		return new ProductDaoImpl(sf);
+	}
+	@Autowired
+	@Bean(name = "cartDaoImpl")
+	public CartDaoImpl getCartData(SessionFactory sf) {
+		return new CartDaoImpl(sf);
+	}
+	@Autowired
+	@Bean(name = "orderDaoImpl")
+	public OrderDaoImpl getOrderData(SessionFactory sf) {
+		return new OrderDaoImpl(sf);
 	}
 
 	@Autowired
